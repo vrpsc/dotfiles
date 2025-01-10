@@ -37,6 +37,10 @@ brew install clang-format
 brew install python
 brew install lua
 
+### sketchybar dependencies
+brew install switchaudio-osx
+brew install nowplaying-cli
+
 ## Casks
 echo "Installing Brew Casks..."
 ### Terminals and Browsers
@@ -71,3 +75,30 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # config files
 echo "Planting Configuration Files..."
+[ ! -d "$HOME/dotfiles" ] && git init "$HOME/dotfiles"
+cd "$HOME/dotfiles"
+git remote add -f origin git@github.com:vrpsc/dotfiles.git
+git config core.sparseCheckout true
+echo ".config" >> .git/info/sparse-checkout
+git pull origin main
+rm -rf .git
+cd "$HOME"
+mv "$HOME/dotfiles/.config/*" "$HOME/.config"
+rm -rf "$HOME/dotfiles"
+
+# Sketchybar setup
+echo "Setting up Sketchybar..."
+curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.28/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
+
+(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
+
+# zsh
+source "$HOME/.zshrc"
+
+# Start Services
+echo "Starting Services (grant permissions)..."
+brew services start skhd
+brew services start yabai
+brew services start sketchybar
+
+echo "Installation Complete!\n"
