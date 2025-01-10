@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/vinceprasad/Documents/projects/http-server/asgn1'
+let g:netrw_dirhist_4='/Users/vinceprasad/Documents/projects/http-server'
+let g:netrw_dirhist_3='/Users/vinceprasad/Documents/projects/http-server/asgn1'
+let g:netrw_dirhist_2='/Users/vinceprasad/Documents/projects/http-server'
+let g:netrw_dirhist_1='/Users/vinceprasad/Documents/projects/http-server/asgn1'
+let g:netrw_dirhist_0='/Users/vinceprasad/Documents/projects/http-server'
+let g:netrw_dirhist_9='/Users/vinceprasad/Documents/projects/http-server/asgn1'
+let g:netrw_dirhist_8='/Users/vinceprasad/Documents/projects/http-server'
+let g:netrw_dirhist_7='/Users/vinceprasad/Documents/projects/http-server/asgn0'
+let g:netrw_dirhist_6='/Users/vinceprasad/Documents/projects/http-server'

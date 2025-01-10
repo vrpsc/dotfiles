@@ -1,0 +1,10 @@
+[window]
+  decorations = "buttonless"
+  dynamic_padding = true
+  padding.x = 12
+  padding.y = 12
+
+[font]
+  size = 13.0
+  normal.family = "JetBrainsMono Nerd Font"
+  normal.style = "Regular"
