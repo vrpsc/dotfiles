@@ -80,10 +80,14 @@ cd "$HOME/dotfiles"
 git remote add -f origin git@github.com:vrpsc/dotfiles.git
 git config core.sparseCheckout true
 echo ".config" >> .git/info/sparse-checkout
+echo ".zshrc" >> .git/info/sparse-checkout
+echo ".p10k.zsh" >> .git/info/sparse-checkout
 git pull origin main
 rm -rf .git
 cd "$HOME"
 mv "$HOME/dotfiles/.config/*" "$HOME/.config"
+mv "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
+mv "$HOME/dotfiles/.p10k.zsh" "$HOME/.p10k.zsh"
 rm -rf "$HOME/dotfiles"
 
 # Sketchybar setup
