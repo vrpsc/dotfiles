@@ -90,6 +90,7 @@ mv "$HOME/dotfiles/.config/*" "$HOME/.config"
 mv "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
 mv "$HOME/dotfiles/.p10k.zsh" "$HOME/.p10k.zsh"
 mv "$HOME/dotfiles/tmux-sessionizer" "$HOME/.local/scripts/tmux-sessionizer"
+mv "$HOME/dotfiles/shortcuts.zsh" "$HOME/.oh-my-zsh/custom/shortcuts.zsh"
 rm -rf "$HOME/dotfiles"
 
 # Sketchybar setup
