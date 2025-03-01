@@ -5,13 +5,13 @@ This is a collection of my dotfiles, including an install script for everything 
 ## Installation
 
 ```zsh
-curl -s https://raw.githubusercontent.com/vrpsc/dotfiles/refs/heads/main/.install.sh | zsh
+curl -s https://raw.githubusercontent.com/vrpsc/dotfiles/refs/heads/main/install.sh | sudo zsh
 ```
 
 ## To Do/Fix
 
-- [ ] Make install script executable
-- [ ] Make sure to run script with sudo
+- [x] Make install script executable
+- [x] Make sure to run script with sudo
 - [ ] Make sure to have a ssh key setup for github or use https to clone directory
 - [ ] Make sure to set up nvm by creating .nvm directory and installing node
 - [ ] Make sure to clone powerlevel10k repo into `.oh-my-zsh/custom/themes`
