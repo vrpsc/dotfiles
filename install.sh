@@ -75,17 +75,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # config files
 echo "Planting Configuration Files..."
-[ ! -d "$HOME/dotfiles" ] && git init "$HOME/dotfiles"
-cd "$HOME/dotfiles"
-git remote add -f origin git@github.com:vrpsc/dotfiles.git
-git config core.sparseCheckout true
-echo ".config" >> .git/info/sparse-checkout
-echo ".zshrc" >> .git/info/sparse-checkout
-echo ".p10k.zsh" >> .git/info/sparse-checkout
-echo "tmux-sessionizer" >> .git/info/sparse-checkout
-git pull origin main
-rm -rf .git
 cd "$HOME"
+[ ! -d "$HOME/dotfiles" ] && git clone https://github.com/vrpsc/dotfiles.git
+cd "$HOME/dotfiles"
 mv "$HOME/dotfiles/.config/*" "$HOME/.config"
 mv "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
 mv "$HOME/dotfiles/.p10k.zsh" "$HOME/.p10k.zsh"
@@ -93,19 +85,34 @@ mv "$HOME/dotfiles/tmux-sessionizer" "$HOME/.local/scripts/tmux-sessionizer"
 mv "$HOME/dotfiles/shortcuts.zsh" "$HOME/.oh-my-zsh/custom/shortcuts.zsh"
 rm -rf "$HOME/dotfiles"
 
+# nvm setup
+echo "Setting up nvm..."
+mkdir -p "$HOME/.nvm"
+nvm install node
+
 # Sketchybar setup
 echo "Setting up Sketchybar..."
 curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.28/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
 
 (git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
 
+# powerlevel10k setup
+echo "Setting up Powerlevel10k theme..."
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
+# zsh plugin setup
+echo "Setting up ZSH Plugins..."
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 # zsh
 source "$HOME/.zshrc"
 
 # Start Services
 echo "Starting Services (grant permissions)..."
-brew services start skhd
-brew services start yabai
 brew services start sketchybar
+yabai --start-service
+skhd --start-service
+sketchybar --reload
 
 echo "Installation Complete!\n"
