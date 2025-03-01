@@ -18,4 +18,5 @@ curl -s https://raw.githubusercontent.com/vrpsc/dotfiles/refs/heads/main/.instal
 [ ] Figure out why moving the .config directory doesn't work
 [ ] Figure out why moving the other directories and files doesn't work
 [ ] Fix oh-my-zsh plugins by making sure to clone zsh-autosuggestions and zsh-syntax-highlighting into `.oh-my-zsh/custom/plugins`
+[ ] Add lines to start skhd and yabai with `[program] --start-service`
 
